@@ -1,0 +1,37 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+# load libraries
+#install.packages("manifestoR")
+library(manifestoR)
+library(dplyr)
+```
+
+```{r}
+# set api key - reminder to self to later add this file to the gitignore before pushing
+mp_setapikey("manifesto_apikey.txt")
+```
+
+```{r}
+# get the dataset
+mpds <- mp_maindataset()
+# look at names
+names(mpds)
+```
+```{r}
+# check to see what the dataset looks like
+mpds
+```
+Exploring the data now
+
+```{r}
+# how many unique countries? 67 countries
+mpds %>%
+  select(countryname) %>%
+  unique() %>%
+  nrow()
+```
+
