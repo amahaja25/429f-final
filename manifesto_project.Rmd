@@ -8,6 +8,7 @@ output: html_notebook
 #install.packages("manifestoR")
 library(manifestoR)
 library(dplyr)
+library(stringr)
 ```
 
 ```{r}
@@ -25,7 +26,52 @@ names(mpds)
 # check to see what the dataset looks like
 mpds
 ```
-Exploring the data now
+```{r}
+mp_availability(TRUE)
+```
+
+Get the entire corpus
+```{r}
+all <- mp_availability(TRUE)
+all_docs <- mp_corpus(all)
+```
+
+```{r}
+english_only <- mp_availability(TRUE) %>% 
+ filter(language == "english")
+
+english_docs <- mp_corpus(english_only)
+length(english_docs)
+
+```
+
+```{r}
+class(all_docs)
+typeof(all_docs)
+length(all_docs)
+```
+
+```{r}
+all_docs[[1]]
+content(all_docs[[1]])
+```
+```{r}
+all_texts <- sapply(all_docs, content)
+```
+
+
+```{r}
+# count word count in all documents
+doc_word_counts <- str_count(all_texts, boundary("word"))
+# mean word count in all 
+mean(doc_word_counts)
+# median word count in all
+median(doc_word_counts)
+# word count in the longest document
+max(doc_word_counts)
+# min word count
+min(doc_word_counts)
+```
 
 ```{r}
 # how many unique countries? 67 countries
@@ -33,5 +79,45 @@ mpds %>%
   select(countryname) %>%
   unique() %>%
   nrow()
+```
+
+```{r}
+mpds %>%
+  select(parfam) %>%
+  unique() %>%
+  nrow()
+```
+
+```{r}
+mpds %>%
+  group_by(parfam) %>%
+  summarize(count=n()) %>% 
+  arrange(desc(count))
+```
+
+
+```{r}
+total_n <- nrow(mpds)
+
+mpds %>% 
+  group_by(countryname) %>% 
+  summarize(
+    count = n(),
+    pct_of_total = 100 * (count / total_n)
+  ) %>% 
+  arrange(desc(count))
+
+```
+
+```{r}
+summary(mpds$edate)
+```
+
+```{r}
+mpds %>% 
+  arrange((edate))
+
+mpds %>% 
+  arrange(desc(edate))
 ```
 
