@@ -2144,23 +2144,33 @@ mpds %&gt;%
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZV3hzWDJSdlkzTmZaR1lnUEMwZ2JXRndYMlJtY2loaGJHeGZaRzlqYzE5c2FYTjBMQ0IrSUh0Y2JpQWdkSGgwSUR3dElDNTRKR052Ym5SbGJuUWtkR1Y0ZEZ4dUlDQjBhV0ppYkdVb1hHNGdJQ0FnZEdWNGRDQWdJQ0FnSUNBZ0lEMGdhV1lnS0dsekxtNTFiR3dvZEhoMEtTQjhmQ0JzWlc1bmRHZ29kSGgwS1NBOVBTQXdLU0JPUVY5amFHRnlZV04wWlhKZlhHNGdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdaV3h6WlNCd1lYTjBaU2gwZUhRc0lHTnZiR3hoY0hObElEMGdYQ0lnWENJcExGeHVJQ0FnSUhCaGNuUjVJQ0FnSUNBZ0lDQTlJR0Z6TG1Ob1lYSmhZM1JsY2lndWVDUnRaWFJoSkhCaGNuUjVLU3hjYmlBZ0lDQmtZWFJsSUNBZ0lDQWdJQ0FnUFNCaGN5NWphR0Z5WVdOMFpYSW9MbmdrYldWMFlTUmtZWFJsS1N4Y2JpQWdJQ0J0WVc1cFptVnpkRzlmYVdRZ1BTQmhjeTVqYUdGeVlXTjBaWElvTG5na2JXVjBZU1J0WVc1cFptVnpkRzlmYVdRcExGeHVJQ0FnSUd4aGJtZDFZV2RsSUNBZ0lDQTlJR0Z6TG1Ob1lYSmhZM1JsY2lndWVDUnRaWFJoSkd4aGJtZDFZV2RsS1Z4dUlDQXBYRzU5S1Z4dVlHQmdJbjA9IC0tPlxuXG5gYGByXG5hbGxfZG9jc19kZiA8LSBtYXBfZGZyKGFsbF9kb2NzX2xpc3QsIH4ge1xuICB0eHQgPC0gLngkY29udGVudCR0ZXh0XG4gIHRpYmJsZShcbiAgICB0ZXh0ICAgICAgICAgPSBpZiAoaXMubnVsbCh0eHQpIHx8IGxlbmd0aCh0eHQpID09IDApIE5BX2NoYXJhY3Rlcl9cbiAgICAgICAgICAgICAgICAgICBlbHNlIHBhc3RlKHR4dCwgY29sbGFwc2UgPSBcIiBcIiksXG4gICAgcGFydHkgICAgICAgID0gYXMuY2hhcmFjdGVyKC54JG1ldGEkcGFydHkpLFxuICAgIGRhdGUgICAgICAgICA9IGFzLmNoYXJhY3RlcigueCRtZXRhJGRhdGUpLFxuICAgIG1hbmlmZXN0b19pZCA9IGFzLmNoYXJhY3RlcigueCRtZXRhJG1hbmlmZXN0b19pZCksXG4gICAgbGFuZ3VhZ2UgICAgID0gYXMuY2hhcmFjdGVyKC54JG1ldGEkbGFuZ3VhZ2UpXG4gIClcbn0pXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWxsX2RvY3NfZGYgPC0gbWFwX2RmcihhbGxfZG9jc19saXN0LCB+IHtcbiAgdHh0IDwtIC54JGNvbnRlbnQkdGV4dFxuICB0aWJibGUoXG4gICAgdGV4dCAgICAgICAgID0gaWYgKGlzLm51bGwodHh0KSB8fCBsZW5ndGgodHh0KSA9PSAwKSBOQV9jaGFyYWN0ZXJfXG4gICAgICAgICAgICAgICAgICAgZWxzZSBwYXN0ZSh0eHQsIGNvbGxhcHNlID0gXCIgXCIpLFxuICAgIHBhcnR5ICAgICAgICA9IGFzLmNoYXJhY3RlcigueCRtZXRhJHBhcnR5KSxcbiAgICBkYXRlICAgICAgICAgPSBhcy5jaGFyYWN0ZXIoLngkbWV0YSRkYXRlKSxcbiAgICBtYW5pZmVzdG9faWQgPSBhcy5jaGFyYWN0ZXIoLngkbWV0YSRtYW5pZmVzdG9faWQpLFxuICAgIGxhbmd1YWdlICAgICA9IGFzLmNoYXJhY3RlcigueCRtZXRhJGxhbmd1YWdlKVxuICApXG59KVxuYGBgIn0= -->
-<pre class="r"><code>all_docs_df &lt;- map_dfr(all_docs_list, ~ {
-  txt &lt;- .x$content$text
-  tibble(
-    text         = if (is.null(txt) || length(txt) == 0) NA_character_
-                   else paste(txt, collapse = &quot; &quot;),
-    party        = as.character(.x$meta$party),
-    date         = as.character(.x$meta$date),
-    manifesto_id = as.character(.x$meta$manifesto_id),
-    language     = as.character(.x$meta$language)
-  )
-})</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZV3hzWDJSdlkzTmZaR1lnUEMwZ2EyVmxjQ2hoY3k1c2FYTjBLR0ZzYkY5a2IyTnpLU3dnZmlBaGFYTXViblZzYkNndWVDUmpiMjUwWlc1MEtTa2dmRDVjYmlBZ2JXRndYMlJtY2loK0lIdGNiaUFnSUNCMGVIUWdQQzBnTG5na1kyOXVkR1Z1ZENSMFpYaDBYRzRnSUNBZ2RHbGlZbXhsS0Z4dUlDQWdJQ0FnZEdWNGRDQWdJQ0FnSUNBZ0lEMGdhV1lnS0dsekxtNTFiR3dvZEhoMEtTQjhmQ0JzWlc1bmRHZ29kSGgwS1NBOVBTQXdLU0JPUVY5amFHRnlZV04wWlhKZklGeHVJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnWld4elpTQndZWE4wWlNoMGVIUXNJR052Ykd4aGNITmxJRDBnWENJZ1hDSXBMRnh1SUNBZ0lDQWdjR0Z5ZEhrZ0lDQWdJQ0FnSUQwZ1lYTXVZMmhoY21GamRHVnlLQzU0SkcxbGRHRWtjR0Z5ZEhrcExGeHVJQ0FnSUNBZ1pHRjBaU0FnSUNBZ0lDQWdJRDBnWVhNdVkyaGhjbUZqZEdWeUtDNTRKRzFsZEdFa1pHRjBaU2tzWEc0Z0lDQWdJQ0J0WVc1cFptVnpkRzlmYVdRZ1BTQmhjeTVqYUdGeVlXTjBaWElvTG5na2JXVjBZU1J0WVc1cFptVnpkRzlmYVdRcExGeHVJQ0FnSUNBZ2JHRnVaM1ZoWjJVZ0lDQWdJRDBnWVhNdVkyaGhjbUZqZEdWeUtDNTRKRzFsZEdFa2JHRnVaM1ZoWjJVcFhHNGdJQ0FnS1Z4dUlDQjlLVnh1WEc1dWNtOTNLR0ZzYkY5a2IyTnpYMlJtS1Z4dVlHQmdJbjA9IC0tPlxuXG5gYGByXG5hbGxfZG9jc19kZiA8LSBrZWVwKGFzLmxpc3QoYWxsX2RvY3MpLCB+ICFpcy5udWxsKC54JGNvbnRlbnQpKSB8PlxuICBtYXBfZGZyKH4ge1xuICAgIHR4dCA8LSAueCRjb250ZW50JHRleHRcbiAgICB0aWJibGUoXG4gICAgICB0ZXh0ICAgICAgICAgPSBpZiAoaXMubnVsbCh0eHQpIHx8IGxlbmd0aCh0eHQpID09IDApIE5BX2NoYXJhY3Rlcl8gXG4gICAgICAgICAgICAgICAgICAgICBlbHNlIHBhc3RlKHR4dCwgY29sbGFwc2UgPSBcIiBcIiksXG4gICAgICBwYXJ0eSAgICAgICAgPSBhcy5jaGFyYWN0ZXIoLngkbWV0YSRwYXJ0eSksXG4gICAgICBkYXRlICAgICAgICAgPSBhcy5jaGFyYWN0ZXIoLngkbWV0YSRkYXRlKSxcbiAgICAgIG1hbmlmZXN0b19pZCA9IGFzLmNoYXJhY3RlcigueCRtZXRhJG1hbmlmZXN0b19pZCksXG4gICAgICBsYW5ndWFnZSAgICAgPSBhcy5jaGFyYWN0ZXIoLngkbWV0YSRsYW5ndWFnZSlcbiAgICApXG4gIH0pXG5cbm5yb3coYWxsX2RvY3NfZGYpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWxsX2RvY3NfZGYgPC0ga2VlcChhcy5saXN0KGFsbF9kb2NzKSwgfiAhaXMubnVsbCgueCRjb250ZW50KSkgfD5cbiAgbWFwX2Rmcih+IHtcbiAgICB0eHQgPC0gLngkY29udGVudCR0ZXh0XG4gICAgdGliYmxlKFxuICAgICAgdGV4dCAgICAgICAgID0gaWYgKGlzLm51bGwodHh0KSB8fCBsZW5ndGgodHh0KSA9PSAwKSBOQV9jaGFyYWN0ZXJfIFxuICAgICAgICAgICAgICAgICAgICAgZWxzZSBwYXN0ZSh0eHQsIGNvbGxhcHNlID0gXCIgXCIpLFxuICAgICAgcGFydHkgICAgICAgID0gYXMuY2hhcmFjdGVyKC54JG1ldGEkcGFydHkpLFxuICAgICAgZGF0ZSAgICAgICAgID0gYXMuY2hhcmFjdGVyKC54JG1ldGEkZGF0ZSksXG4gICAgICBtYW5pZmVzdG9faWQgPSBhcy5jaGFyYWN0ZXIoLngkbWV0YSRtYW5pZmVzdG9faWQpLFxuICAgICAgbGFuZ3VhZ2UgICAgID0gYXMuY2hhcmFjdGVyKC54JG1ldGEkbGFuZ3VhZ2UpXG4gICAgKVxuICB9KVxuXG5ucm93KGFsbF9kb2NzX2RmKVxuYGBgIn0= -->
+<pre class="r"><code>all_docs_df &lt;- keep(as.list(all_docs), ~ !is.null(.x$content)) |&gt;
+  map_dfr(~ {
+    txt &lt;- .x$content$text
+    tibble(
+      text         = if (is.null(txt) || length(txt) == 0) NA_character_ 
+                     else paste(txt, collapse = &quot; &quot;),
+      party        = as.character(.x$meta$party),
+      date         = as.character(.x$meta$date),
+      manifesto_id = as.character(.x$meta$manifesto_id),
+      language     = as.character(.x$meta$language)
+    )
+  })
+
+nrow(all_docs_df)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IG9iamVjdCAnYWxsX2RvY3NfbGlzdCcgbm90IGZvdW5kXG4ifQ== -->
-<pre><code>Error: object &#39;all_docs_list&#39; not found</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMzMjdcbiJ9 -->
+<pre><code>[1] 3327</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVkM0pwZEdVdVkzTjJLR0ZzYkY5a2IyTnpYMlJtTENCY0ltMWhibWxtWlhOMGIxOTBaWGgwY3k1amMzWmNJaXhjYmlBZ0lDQWdJQ0FnSUNCeWIzY3VibUZ0WlhNZ1BTQkdRVXhUUlN3Z1ptbHNaVVZ1WTI5a2FXNW5JRDBnWENKVlZFWXRPRndpS1Z4dVhHNWNibUJnWUNKOSAtLT5cblxuYGBgclxud3JpdGUuY3N2KGFsbF9kb2NzX2RmLCBcIm1hbmlmZXN0b190ZXh0cy5jc3ZcIixcbiAgICAgICAgICByb3cubmFtZXMgPSBGQUxTRSwgZmlsZUVuY29kaW5nID0gXCJVVEYtOFwiKVxuXG5cbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGUuY3N2KGFsbF9kb2NzX2RmLCBcIm1hbmlmZXN0b190ZXh0cy5jc3ZcIixcbiAgICAgICAgICByb3cubmFtZXMgPSBGQUxTRSwgZmlsZUVuY29kaW5nID0gXCJVVEYtOFwiKVxuXG5cbmBgYCJ9 -->
+<pre class="r"><code>write.csv(all_docs_df, &quot;manifesto_texts.csv&quot;,
+          row.names = FALSE, fileEncoding = &quot;UTF-8&quot;)
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
